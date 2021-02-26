@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/css/bootstrap.min.css" />
+<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+<script type="text/javascript"
+	src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="container text-center text-danger">
+
+		<div>
+
+			<form th:action="@{/logout}" method="POST">
+				<p>
+					Welcome::<b>[[${#request.userPrincipal.principal.fullName}]]</b>
+				</p>
+				<div class="btn btn-danger">
+				<input type="submit"  value="Sign Out" />
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+	<div>
+		<h1 class="container text-center text-success">list of Users</h1>
+	</div>
+	<div>
+		<table class="table tyable-striped table-bordered table-success">
+
+			<thead class="thead-dark">
+				<tr>
+					<th>User Id</th>
+					<th>User Email</th>
+					<th>FirstName</th>
+					<th>LastName</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="user:${listUsers}">
+					<td th:text="${user.id}">user Id</td>
+					<td th:text="${user.email}">Email</td>
+					<td th:text="${user.firstname}">FirstName</td>
+					<td th:text="${user.lastname}">LastName</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</div>
+
+</body>
+</html>
